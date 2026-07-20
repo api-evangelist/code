@@ -1,0 +1,28 @@
+generated: '2026-07-18'
+method: searched
+source: https://code-payments.github.io/code-sdk/docs/
+docs: https://code-payments.github.io/code-sdk/docs/guide/introduction.html
+note: >-
+  Code exposes a gRPC/Protobuf API (code-protobuf-api), not a REST API, so there
+  is no OpenAPI securityScheme to derive from. Authentication is self-custodial
+  and protocol-level rather than API-key/OAuth based.
+summary:
+  types: [self-custodial-keypair, jwt]
+  api_key_in: []
+  oauth2_flows: []
+schemes:
+  - name: Ed25519 request signing
+    type: self-custodial-keypair
+    description: >-
+      Clients sign gRPC requests (intents, swaps, messages) with an Ed25519
+      keypair derived from the user's self-custodial wallet. No account
+      registration, API key, or OAuth token is required ("no sign-up
+      necessary"). Timelock accounts on Solana enforce ownership on-chain.
+    sources: [grpc/code-transaction-v2.proto, grpc/code-common-v1.proto]
+  - name: Webhook JWT verification
+    type: jwt
+    description: >-
+      Server-side payment-event webhooks are delivered as JWT-signed
+      notifications; the receiving server verifies the JWT signature to confirm
+      the event originated from Code and was not tampered with.
+    sources: [asyncapi/code-webhooks.yml]
