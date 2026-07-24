@@ -1,0 +1,64 @@
+generated: '2026-07-18'
+method: searched
+source: https://code-payments.github.io/code-sdk/docs/guide/introduction.html
+packages:
+  - language: javascript
+    registry: npm
+    name: "@code-wallet/elements"
+    url: https://www.npmjs.com/package/@code-wallet/elements
+    install: npm install @code-wallet/elements
+    official: true
+    notes: Embeddable "Pay with Code" button / elements (web components).
+  - language: javascript
+    registry: npm
+    name: "@code-wallet/client"
+    url: https://www.npmjs.com/package/@code-wallet/client
+    install: npm install @code-wallet/client
+    official: true
+    notes: Server-side client for creating payment intents and verifying payments.
+  - language: javascript
+    registry: npm
+    name: "@code-wallet/library"
+    url: https://www.npmjs.com/package/@code-wallet/library
+    install: npm install @code-wallet/library
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@code-wallet/keys"
+    url: https://www.npmjs.com/package/@code-wallet/keys
+    install: npm install @code-wallet/keys
+    official: true
+    notes: Ed25519 keypair / signing utilities.
+  - language: javascript
+    registry: npm
+    name: "@code-wallet/currency"
+    url: https://www.npmjs.com/package/@code-wallet/currency
+    install: npm install @code-wallet/currency
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@code-wallet/intents"
+    url: https://www.npmjs.com/package/@code-wallet/intents
+    install: npm install @code-wallet/intents
+    official: true
+  - language: python
+    registry: pypi
+    name: code-wallet
+    url: https://pypi.org/project/code-wallet/
+    install: pip install code-wallet
+    official: true
+    source: https://github.com/code-payments/code-sdk-python
+  - language: php
+    registry: packagist
+    name: code-wallet/client
+    url: https://packagist.org/packages/code-wallet/client
+    install: composer require code-wallet/client
+    official: true
+    source: https://github.com/code-payments/code-sdk-php
+  - language: go
+    registry: pkg.go.dev
+    name: github.com/code-payments/code-sdk-go
+    url: https://pkg.go.dev/github.com/code-payments/code-sdk-go
+    install: go get github.com/code-payments/code-sdk-go
+    official: true
+    source: https://github.com/code-payments/code-sdk-go

@@ -1,0 +1,75 @@
+generated: '2026-07-18'
+method: derived
+source: grpc/ (code-protobuf-api Result / Error enums)
+format: grpc-result-enum
+note: >-
+  Code's gRPC API returns a message-level `result` enum on each response rather
+  than RFC 9457 problem+json. These entries are derived verbatim from the enum
+  values in the code-protobuf-api .proto files; OK/success codes are omitted.
+problems:
+  - service: account.v1.Account
+    operation: IsCodeAccount
+    codes:
+      - {code: NOT_FOUND, meaning: The token account was not found on chain.}
+      - {code: UNLOCKED_TIMELOCK_ACCOUNT, meaning: The timelock account is in an unlocked state.}
+    source_operation: grpc/code-account-v1.proto#IsCodeAccount
+  - service: account.v1.Account
+    operation: GetTokenAccountInfos
+    codes:
+      - {code: NOT_FOUND, meaning: No token account info found for the request.}
+    source_operation: grpc/code-account-v1.proto#GetTokenAccountInfos
+  - service: currency.v1.Currency
+    operation: GetAllRates
+    codes:
+      - {code: MISSING_DATA, meaning: Exchange rate data is unavailable.}
+    source_operation: grpc/code-currency-v1.proto#GetAllRates
+  - service: currency.v1.Currency
+    operation: GetMints
+    codes:
+      - {code: NOT_FOUND, meaning: Requested mint(s) not found.}
+    source_operation: grpc/code-currency-v1.proto#GetMints
+  - service: messaging.v1.Messaging
+    operation: SendMessage
+    codes:
+      - {code: NO_ACTIVE_STREAM, meaning: No active message stream for the recipient.}
+    source_operation: grpc/code-messaging-v1.proto#SendMessage
+  - service: transaction.v2.Transaction
+    operation: SubmitIntent
+    codes:
+      - {code: DENIED, meaning: The intent was denied (policy / limits / ownership).}
+      - {code: INVALID_INTENT, meaning: The submitted intent failed validation.}
+      - {code: SIGNATURE_ERROR, meaning: A required signature was missing or invalid.}
+      - {code: STALE_STATE, meaning: The account/intent state was stale; retry with fresh state.}
+    source_operation: grpc/code-transaction-v2.proto#SubmitIntent
+  - service: transaction.v2.Transaction
+    operation: GetIntentMetadata
+    codes:
+      - {code: NOT_FOUND, meaning: No metadata found for the intent.}
+    source_operation: grpc/code-transaction-v2.proto#GetIntentMetadata
+  - service: transaction.v2.Transaction
+    operation: Airdrop
+    codes:
+      - {code: UNAVAILABLE, meaning: Airdrops are unavailable.}
+      - {code: ALREADY_CLAIMED, meaning: The airdrop has already been claimed by the owner.}
+    source_operation: grpc/code-transaction-v2.proto#Airdrop
+  - service: transaction.v2.Transaction
+    operation: VoidGiftCard
+    codes:
+      - {code: DENIED, meaning: The owner account did not issue the gift card account.}
+      - {code: CLAIMED_BY_OTHER_USER, meaning: A different owner account than the issuer claimed the gift card.}
+      - {code: NOT_FOUND, meaning: The gift card account was not found.}
+    source_operation: grpc/code-transaction-v2.proto#VoidGiftCard
+  - service: transaction.v2.Transaction
+    operation: Swap / StartSwap
+    codes:
+      - {code: DENIED, meaning: The swap was denied.}
+      - {code: SIGNATURE_ERROR, meaning: A required signature was missing or invalid.}
+      - {code: INVALID_SWAP, meaning: The swap request failed validation.}
+      - {code: SWAP_FAILED, meaning: The swap could not be finalized on chain.}
+    source_operation: grpc/code-transaction-v2.proto#Swap
+  - service: transaction.v2.Transaction
+    operation: GetSwap / GetPendingSwaps
+    codes:
+      - {code: NOT_FOUND, meaning: No swap found for the request.}
+      - {code: DENIED, meaning: Access to the swap was denied.}
+    source_operation: grpc/code-transaction-v2.proto#GetSwap

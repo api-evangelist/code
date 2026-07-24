@@ -1,0 +1,52 @@
+generated: '2026-07-18'
+method: searched
+source: https://code-payments.github.io/code-sdk/docs/
+description: >-
+  Cross-cutting request/response semantics for the Code payments API and SDK,
+  captured from the developer docs and the code-protobuf-api gRPC definitions.
+transport:
+  protocol: gRPC
+  encoding: Protobuf
+  streaming: >-
+    Bidirectional streaming RPCs (SubmitIntent, StartSwap, Swap,
+    OpenMessageStream); browser clients use a WebSocket connection to the Code
+    Sequencer for real-time payment events.
+  endpoint: https://api.codeinfra.net:443
+authentication:
+  style: self-custodial Ed25519 request signing (see authentication/code-authentication.yml)
+idempotency:
+  supported: true
+  mechanism: idempotencyKey
+  scope: paymentIntents.create()
+  docs: https://code-payments.github.io/code-sdk/docs/reference/idempotency.html
+  description: >-
+    Payment intents are created with an `idempotencyKey` parameter. Any attempt
+    to replicate a transaction with the same key fails, guaranteeing single
+    execution under retries. Docs recommend deterministic keys that incorporate
+    unique identifiers (e.g. destination address plus a developer-specific GUID).
+    example: "idempotencyKey: `${game.id}-${item.id}`"
+payment_intents:
+  create: code.paymentIntents.create({ amount, currency, destination, idempotencyKey, webhook })
+  returns: [clientSecret, id]
+  verify: code.paymentIntents.getStatus({ intent })
+  guidance: >-
+    Payments should be verified server-side to ensure they were not tampered
+    with in the browser and were actually sent to the developer's wallet.
+webhooks:
+  supported: true
+  registration: pass webhook.url to paymentIntents.create(); URL must be live at intent creation
+  signing: JWT-signed notifications
+  payload_fields: [amount, currency, destination, exchangeRate, intent, quarks, state]
+  catalog: asyncapi/code-webhooks.yml
+currency:
+  model: >-
+    Amounts are denominated in a fiat currency (e.g. 'usd') and converted to
+    on-chain "quarks" via an exchange rate; the currency service (GetAllRates,
+    GetMints) supplies exchange data.
+error_envelope:
+  style: >-
+    Each gRPC response carries a message-level `result` enum (OK plus
+    operation-specific failure codes); streaming intent submission returns
+    structured Success/Error details. See errors/code-problem-types.yml.
+fees:
+  model: Payments as low as 5 cents per transaction, plus a flat 1-cent blockchain fee.

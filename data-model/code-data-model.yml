@@ -1,0 +1,37 @@
+generated: '2026-07-18'
+method: derived
+source: grpc/ (code-protobuf-api messages/enums)
+description: >-
+  Core entities of the Code payments protocol, derived from the code-protobuf-api
+  message and enum definitions. Identifiers are Solana public keys / on-chain
+  accounts rather than provider-prefixed ids.
+entities:
+  - name: Owner
+    description: Self-custodial wallet owner, identified by an Ed25519 public key.
+    source: grpc/code-common-v1.proto
+  - name: TokenAccount
+    description: A Solana token account (timelock-managed) holding balance.
+    account_types: [PRIMARY, TEMPORARY_INCOMING, TEMPORARY_OUTGOING, BUCKET, REMOTE_SEND_GIFT_CARD, RELATIONSHIP]
+    source: grpc/code-common-v1.proto#AccountType
+  - name: Intent
+    description: A signed transaction intent (send/receive/open-account/swap) submitted via SubmitIntent.
+    source: grpc/code-transaction-v2.proto
+  - name: ExchangeData
+    description: Fiat currency + amount + exchange rate + on-chain quarks for a payment.
+    source: grpc/code-transaction-v2.proto
+  - name: GiftCard
+    description: Remote-send gift card account that can be claimed or voided.
+    source: grpc/code-transaction-v2.proto#VoidGiftCard
+  - name: Swap
+    description: A token swap initiated via StartSwap/Swap.
+    source: grpc/code-transaction-v2.proto
+  - name: Message
+    description: A messaging-stream payload (payment requests / signatures) exchanged between clients.
+    source: grpc/code-messaging-v1.proto
+relationships:
+  - {from: TokenAccount, type: belongs_to, to: Owner, via: owner}
+  - {from: Intent, type: belongs_to, to: Owner, via: owner}
+  - {from: Intent, type: has_many, to: TokenAccount, via: actions}
+  - {from: Intent, type: has_one, to: ExchangeData, via: exchange_data}
+  - {from: GiftCard, type: belongs_to, to: Owner, via: issuer}
+  - {from: Swap, type: belongs_to, to: Owner, via: owner}

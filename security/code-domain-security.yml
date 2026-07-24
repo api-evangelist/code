@@ -1,0 +1,18 @@
+generated: '2026-07-18'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: getcode.com
+  https: true
+  tls_cert_error: '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch,
+    certificate is not valid for ''getcode.com'
+  hsts: null
+domains:
+- domain: getcode.com
+  dnssec: false
+  caa:
+  - 0 issuewild ";"
+  - 0 issue ";"
+  spf: true
+  dmarc: true
+  dmarc_policy: reject

@@ -1,0 +1,28 @@
+generated: '2026-07-18'
+method: derived
+source: grpc/ (code-protobuf-api) + https://github.com/code-payments
+versioning:
+  scheme: protobuf-package-version
+  current:
+    account: v1
+    common: v1
+    currency: v1
+    messaging: v1
+    transaction: v2
+  docs: https://github.com/code-payments/code-protobuf-api
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: >-
+    No formal deprecation policy is published. Deprecated fields are marked
+    inline in the .proto (reserved field numbers with "Deprecated" comments,
+    e.g. in GetLimitsResponse).
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+note: >-
+  Code is an open-source, self-custodial protocol; there is no public status
+  page or SLA. The hosted endpoint (api.codeinfra.net) and marketing domain
+  (getcode.com) were unreachable at probe time (2026-07-18) — the living
+  developer surface is the code-payments GitHub org and its GitHub Pages docs.

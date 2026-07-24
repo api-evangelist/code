@@ -1,0 +1,8 @@
+generated: '2026-07-18'
+method: generated
+source: grpc/ + https://code-payments.github.io/code-sdk/docs/
+skills:
+  - file: code-request-and-verify-payment.md
+    name: Request and verify a Code payment
+    api: grpc/code-transaction-v2.proto
+    operations: [paymentIntents.create, paymentIntents.getStatus, SubmitIntent, GetIntentMetadata]

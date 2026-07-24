@@ -1,0 +1,25 @@
+generated: '2026-07-18'
+method: derived
+source: grpc/ (code-protobuf-api) + https://code-payments.github.io/code-sdk/docs/
+standards:
+  - id: grpc
+    conforms: true
+    evidence: API is defined as gRPC services in code-protobuf-api (.proto).
+  - id: protobuf3
+    conforms: true
+    evidence: All service/message definitions use proto3 syntax.
+  - id: jwt
+    conforms: true
+    evidence: Payment-event webhooks are delivered as JWT-signed notifications.
+  - id: ed25519
+    conforms: true
+    evidence: Requests are signed with self-custodial Ed25519 keypairs (Solana).
+  - id: oauth2
+    conforms: false
+    evidence: No OAuth2 flows; auth is self-custodial keypair signing.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors are gRPC message-level result enums, not application/problem+json.
+  - id: openapi
+    conforms: false
+    evidence: No REST/OpenAPI surface; the contract is Protobuf/gRPC.

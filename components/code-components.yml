@@ -1,0 +1,29 @@
+generated: '2026-07-18'
+method: searched
+source: https://code-payments.github.io/code-sdk/docs/reference/app.html
+description: >-
+  Client-side embeddable UI components published by Code (the "Pay with Code"
+  elements). These are browser web components / iframes distinct from the
+  server-side SDKs in packages/.
+loaders:
+  - name: Code SDK elements loader
+    url: https://js.getcode.com/v1
+    notes: Hosted JavaScript bundle that mounts Code elements into the page.
+  - name: "@code-wallet/elements"
+    registry: npm
+    url: https://www.npmjs.com/package/@code-wallet/elements
+families:
+  - family: Payment button
+    components:
+      - name: button
+        create: code.elements.create('button')
+        mount: .mount('#button-container')
+        params: [currency, destination, amount, idempotencyKey]
+        events: [success, cancel]
+        description: >-
+          Embeddable "Pay with Code" button that renders a scannable KikCode /
+          payment request and streams client-side success/cancel events over a
+          WebSocket connection to the Code Sequencer.
+source_repos:
+  - https://github.com/code-payments/code-sdk-elements
+  - https://github.com/code-payments/code-sdk (packages/elements, packages/views)

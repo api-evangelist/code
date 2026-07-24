@@ -1,0 +1,38 @@
+# Code
+
+> Code is an open, self-custodial payments protocol and mobile wallet built on the Solana blockchain. Its SDK lets any web developer embed a "Pay with Code" button and accept permissionless micropayments — as little as 5 cents per transaction plus a flat 1-cent blockchain fee — with no sign-up required and just a few lines of code. The API is defined as gRPC/Protobuf services; payments are created as idempotent intents and confirmed via JWT-signed webhooks or client-side events.
+
+## Developer docs
+- [Code Developer docs](https://code-payments.github.io/code-sdk/docs/): SDK guide and reference
+- [Introduction](https://code-payments.github.io/code-sdk/docs/guide/introduction.html): what Code is and how it works
+- [Quick start](https://code-payments.github.io/code-sdk/docs/guide/quick-start.html): create a Pay with Code button
+- [Idempotency](https://code-payments.github.io/code-sdk/docs/reference/idempotency.html): idempotencyKey on payment intents
+- [Payment verification](https://code-payments.github.io/code-sdk/docs/example/payment-verification.html): server-side verification
+- [Payment events / webhooks](https://code-payments.github.io/code-sdk/docs/example/payment-events.html): JWT-signed webhooks + client events
+
+## API (gRPC / Protobuf)
+- [code-protobuf-api](https://github.com/code-payments/code-protobuf-api): Protobuf API definitions
+- [grpc/code-account-v1.proto](grpc/code-account-v1.proto): account service
+- [grpc/code-currency-v1.proto](grpc/code-currency-v1.proto): currency/exchange service
+- [grpc/code-messaging-v1.proto](grpc/code-messaging-v1.proto): messaging/stream service
+- [grpc/code-transaction-v2.proto](grpc/code-transaction-v2.proto): transaction/intent/swap service
+- [grpc/code-common-v1.proto](grpc/code-common-v1.proto): common models
+- gRPC endpoint: https://api.codeinfra.net:443
+
+## SDKs
+- [@code-wallet/elements (npm)](https://www.npmjs.com/package/@code-wallet/elements): Pay with Code button
+- [@code-wallet/client (npm)](https://www.npmjs.com/package/@code-wallet/client): server-side client
+- [code-wallet (PyPI)](https://pypi.org/project/code-wallet/): Python SDK
+- [code-wallet/client (Packagist)](https://packagist.org/packages/code-wallet/client): PHP SDK
+- [code-sdk-go](https://github.com/code-payments/code-sdk-go): Go SDK
+
+## Source
+- [code-payments on GitHub](https://github.com/code-payments): open-source org
+- [code-sdk](https://github.com/code-payments/code-sdk): JavaScript/TypeScript SDK monorepo
+- [code-vm](https://github.com/code-payments/code-vm): purpose-built Solana VM
+
+## Repo artifacts
+- [packages/code-packages.yml](packages/code-packages.yml): SDK inventory
+- [conventions/code-conventions.yml](conventions/code-conventions.yml): idempotency, webhooks, intents
+- [errors/code-problem-types.yml](errors/code-problem-types.yml): gRPC result codes
+- [asyncapi/code-webhooks.yml](asyncapi/code-webhooks.yml): webhook catalog

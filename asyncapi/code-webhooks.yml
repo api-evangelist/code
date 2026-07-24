@@ -1,0 +1,41 @@
+generated: '2026-07-18'
+method: searched
+source: https://code-payments.github.io/code-sdk/docs/example/payment-events.html
+spec_type: Webhooks
+description: >-
+  Code delivers server-side payment events as JWT-signed webhook notifications.
+  There is no separately published AsyncAPI document; this captures the webhook
+  catalog verbatim from the Payment Events docs. Client-side, the payment button
+  also emits events over a WebSocket connection to the Code Sequencer.
+delivery:
+  transport: HTTPS POST
+  signing: JWT
+  registration: >-
+    Register a publicly accessible URL by passing `webhook: { url:
+    'https://example.com/webhook' }` to paymentIntents.create(). The endpoint
+    must be live at the time the intent is created.
+payload:
+  fields:
+    - name: amount
+      description: Payment amount in the requested currency.
+    - name: currency
+      description: Fiat currency of the payment (e.g. usd).
+    - name: destination
+      description: Destination Solana wallet address.
+    - name: exchangeRate
+      description: Fiat-to-token exchange rate applied.
+    - name: intent
+      description: Payment intent id the event corresponds to.
+    - name: quarks
+      description: On-chain amount in quarks (smallest unit).
+    - name: state
+      description: Payment state for the intent.
+client_events:
+  transport: WebSocket (Code Sequencer)
+  events:
+    - name: success
+      handler: button.on('success', async (event) => { ... })
+      description: Fired client-side when a payment completes; event carries the intent id.
+    - name: cancel
+      handler: button.on('cancel', async (event) => { ... })
+      description: Fired client-side when a payment is cancelled.

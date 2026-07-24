@@ -1,20 +1,85 @@
 aid: code
 name: Code
-description: Code is a company surfaced as a portfolio company of union-square-ventures and added to the
-  API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Code is an open, self-custodial payments protocol and mobile wallet built on
+  the Solana blockchain. Its SDK lets any web developer embed a "Pay with Code"
+  button and accept permissionless micropayments — as little as 5 cents per
+  transaction plus a flat 1-cent blockchain fee — with no sign-up required and
+  just a few lines of code. The API is defined as gRPC/Protobuf services
+  (code-protobuf-api): clients sign transaction intents with a self-custodial
+  Ed25519 keypair, payments are created as idempotent payment intents, and
+  completion is confirmed server-side or via JWT-signed webhooks. The entire
+  stack — SDKs (JavaScript, Go, Python, PHP), the Code VM, and the on-chain
+  Solana programs — is open source under the code-payments GitHub org. Code was
+  seeded by Union Square Ventures.
 url: https://raw.githubusercontent.com/api-evangelist/code/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: open
+  trial: false
+  try_now: false
+  public: true
+  label: Open access
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://avatars.githubusercontent.com/u/151064663?v=4
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - union-square-ventures
 x-tier: stub
 x-tier-reason: portfolio-lead
+x-status-note: >-
+  getcode.com and the hosted gRPC endpoint (api.codeinfra.net) were unreachable
+  at enrichment time (2026-07-18; getcode.com CAA forbids cert issuance). The
+  living developer surface is the open-source code-payments GitHub org and its
+  GitHub Pages docs; the project has evolved toward the Open Code Protocol (OCP)
+  and Flipcash.
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
-apis: []
+- Payments
+- Micropayments
+- Wallet
+- Solana
+- Blockchain
+- Cryptocurrency
+- gRPC
+- Self-Custodial
+apis:
+- name: Code Protobuf API
+  description: >-
+    The Code payments gRPC/Protobuf API — account, currency, messaging, and
+    transaction (intent/swap) services that power the Code wallet and SDK.
+  humanURL: https://code-payments.github.io/code-sdk/docs/
+  baseURL: https://api.codeinfra.net:443
+  tags:
+  - Payments
+  - gRPC
+  - Protobuf
+  properties:
+  - type: Protobuf
+    name: Account service (v1)
+    url: grpc/code-account-v1.proto
+  - type: Protobuf
+    name: Currency service (v1)
+    url: grpc/code-currency-v1.proto
+  - type: Protobuf
+    name: Messaging service (v1)
+    url: grpc/code-messaging-v1.proto
+  - type: Protobuf
+    name: Transaction service (v2)
+    url: grpc/code-transaction-v2.proto
+  - type: Protobuf
+    name: Common models (v1)
+    url: grpc/code-common-v1.proto
+  - type: Documentation
+    url: https://code-payments.github.io/code-sdk/docs/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -23,3 +88,52 @@ maintainers:
 common:
 - type: Website
   url: https://getcode.com
+- type: DeveloperPortal
+  url: https://code-payments.github.io/code-sdk/docs/
+- type: Documentation
+  url: https://code-payments.github.io/code-sdk/docs/guide/introduction.html
+- type: APIReference
+  url: https://code-payments.github.io/code-sdk/docs/reference/app.html
+- type: GettingStarted
+  url: https://code-payments.github.io/code-sdk/docs/guide/quick-start.html
+- type: GitHubOrganization
+  url: https://github.com/code-payments
+- type: Support
+  url: https://discord.gg/T8Tpj8DBFp
+- type: Packages
+  url: packages/code-packages.yml
+- type: SDKs
+  url: packages/code-packages.yml
+- type: Components
+  url: components/code-components.yml
+- type: Authentication
+  url: authentication/code-authentication.yml
+- type: Conventions
+  url: conventions/code-conventions.yml
+- type: Idempotency
+  url: conventions/code-conventions.yml
+- type: Webhooks
+  url: asyncapi/code-webhooks.yml
+- type: ErrorCatalog
+  url: errors/code-problem-types.yml
+- type: Conformance
+  url: conformance/code-conformance.yml
+- type: DataModel
+  url: data-model/code-data-model.yml
+- type: Lifecycle
+  url: lifecycle/code-lifecycle.yml
+- type: ChangeLog
+  url: changelog/code-changelog.yml
+- type: MCPServer
+  url: mcp/code-mcp.yml
+- type: LLMsTxt
+  url: llms/code-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DomainSecurity
+  url: security/code-domain-security.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

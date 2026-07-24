@@ -1,0 +1,48 @@
+generated: '2026-07-18'
+method: derived
+status: candidate
+source: grpc/ (code-protobuf-api operations)
+note: >-
+  No official hosted/remote MCP server was found for Code (searched docs, npm
+  @modelcontextprotocol, MCP registries). This is a derived CANDIDATE tool list
+  mapping the gRPC operations to MCP tools; it is not published by the provider.
+server:
+  name: code
+  transport: http
+tools:
+  - name: get_all_rates
+    description: Get current currency exchange rates.
+    source_operation: grpc/code-currency-v1.proto#GetAllRates
+  - name: get_mints
+    description: Get supported token mints.
+    source_operation: grpc/code-currency-v1.proto#GetMints
+  - name: is_code_account
+    description: Check whether a token account is a Code account.
+    source_operation: grpc/code-account-v1.proto#IsCodeAccount
+  - name: get_token_account_infos
+    description: Get info for one or more token accounts.
+    source_operation: grpc/code-account-v1.proto#GetTokenAccountInfos
+  - name: submit_intent
+    description: Submit a signed transaction intent (send/receive/open-account).
+    source_operation: grpc/code-transaction-v2.proto#SubmitIntent
+  - name: get_intent_metadata
+    description: Get metadata for a submitted intent.
+    source_operation: grpc/code-transaction-v2.proto#GetIntentMetadata
+  - name: get_limits
+    description: Get send limits by currency for an owner.
+    source_operation: grpc/code-transaction-v2.proto#GetLimits
+  - name: can_withdraw_to_account
+    description: Check whether a withdrawal to an account is allowed.
+    source_operation: grpc/code-transaction-v2.proto#CanWithdrawToAccount
+  - name: airdrop
+    description: Request an airdrop of core mint tokens.
+    source_operation: grpc/code-transaction-v2.proto#Airdrop
+  - name: void_gift_card
+    description: Void an unclaimed remote-send gift card.
+    source_operation: grpc/code-transaction-v2.proto#VoidGiftCard
+  - name: get_swap
+    description: Get the state of a token swap.
+    source_operation: grpc/code-transaction-v2.proto#GetSwap
+  - name: send_message
+    description: Send a message on a recipient's active stream.
+    source_operation: grpc/code-messaging-v1.proto#SendMessage
