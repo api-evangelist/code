@@ -64,6 +64,101 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Code is a company surfaced as a portfolio company of union-square-ventures and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Code is an open, self-custodial payments protocol and mobile wallet built on the Solana blockchain. Its SDK lets any web developer embed a "Pay with Code" button and accept permissionless micropayments — as little as 5 cents per transaction plus a flat 1-cent blockchain fee — with no sign-up required and just a few lines of code. The API is defined as gRPC/Protobuf services (code-protobuf-api): clients sign transaction intents with a self-custodial Ed25519 keypair, payments are created as idempotent payment intents, and completion is confirmed server-side or via JWT-signed webhooks. The entire stack — SDKs (JavaScript, Go, Python, PHP), the Code VM, and the on-chain Solana programs — is open source under the code-payments GitHub org. Code was seeded by Union Square Ventures.
 
-Backed by: union-square-ventures — https://getcode.com
+**Areas:** Company · Payments · Micropayments · Wallets · Solana · Blockchain · Cryptocurrency · gRPC · Self-Custodial
+
+## Code on APIs.io
+
+Everything profiled for Code is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/code/](https://apis.io/providers/code/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [Code Protobuf API](https://apis.io/apis/code/code-protobuf-api/) — The Code payments gRPC/Protobuf API — account, currency, messaging, and transaction (intent/swap) services that power the Code wallet and SDK.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Code Webhooks](https://apis.io/asyncapis/code/code-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [code](https://apis.io/servers/code/code/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Code Authentication](https://apis.io/security/code/code-authentication/)
+- [Code Domain Security](https://apis.io/security/code/code-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://getcode.com)
+- [Documentation](https://code-payments.github.io/code-sdk/docs/guide/introduction.html)
+- [Getting started](https://code-payments.github.io/code-sdk/docs/guide/quick-start.html)
+- [API reference](https://code-payments.github.io/code-sdk/docs/reference/app.html)
+- [Support](https://discord.gg/T8Tpj8DBFp)
+- [GitHub](https://github.com/code-payments)
+
+## API Evangelist rating
+
+**Kin Score 33.1** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 39.0 |
+| Contract governance | 4.5 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 63.7 |
+| Access clarity | 0.0 |
+
+**Agent readiness 24.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | documented (partial credit) |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 15.2** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/code/](https://apis.io/providers/code/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Code: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/code/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
